@@ -2,7 +2,8 @@ NAME = Phonebook
 
 CXX = c++
 
-CXXFLAGS = -MMD -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -MMD
 
 SRCS = phonebook.cpp
 OBJS = $(SRCS:.cpp=.o)
@@ -25,3 +26,5 @@ re: fclean
 	make all
 
 -include $(DEPS)
+
+.PHONY: all clean fclean re
