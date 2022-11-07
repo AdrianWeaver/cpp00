@@ -28,6 +28,9 @@ fclean: clean
 re: fclean
 	make all
 
+test:	$(NAME)
+		./$(NAME)
+
 -include $(DEPS)
 
 .PHONY: all clean fclean re
