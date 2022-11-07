@@ -5,7 +5,10 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 CPPFLAGS = -MMD
 
-SRCS = phonebook.cpp
+SRCS = phonebook.cpp\
+	   contact.cpp\
+	   main.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(OBJS:.o=.d)
 
@@ -13,7 +16,7 @@ DEPS = $(OBJS:.o=.d)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CXXFLAGS) $(OBJS) -o $(@)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(@)
 
 clean:
 	rm -f $(OBJS)
