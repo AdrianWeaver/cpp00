@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 08:46:12 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/09 11:31:35 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/09 15:59:40 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	Phonebook::add(int index)
 		&Contact::set_phone_number,
 		&Contact::set_darkest_secret,
 	};
-	//input = "";
 	i = 0;
 	while (i < 5)
 	{
