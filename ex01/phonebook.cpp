@@ -6,15 +6,17 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 08:46:12 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/09 15:59:40 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/09 17:56:06 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <iomanip>
+#include <ctype.h>
+#include <stdlib.h>
 #include "phonebook.hpp"
 
-Phonebook::Phonebook(void)
+Phonebook::Phonebook(void) : _total_contacts(0)
 {
 	if (DEBUG)
 		std::cout << "Phonebook constructor called" << std::endl;
@@ -29,12 +31,12 @@ Phonebook::~Phonebook(void)
 	return ;
 }
 
-void	Phonebook::_print_category(int index)
+void	Phonebook::print_category(int index)
 {
 	std::cout << "|         " << index;
 }
 
-void	Phonebook::_print_category(std::string content)
+void	Phonebook::print_category(std::string content)
 {
 	std::cout << "|";
 	if (content.size() > 10)
@@ -46,23 +48,62 @@ void	Phonebook::_print_category(std::string content)
 	std::cout << content;
 }
 
+int	Phonebook::_print_contact(int index) const
+{
+	if (index + 1 <= this->_total_contacts)
+	{
+		std::cout << "First name: " << contacts[index].get_first_name()
+			<< std::endl;
+		std::cout << "Last name: " << contacts[index].get_last_name()
+			<< std::endl;
+		std::cout << "Nickname: " << contacts[index].get_nickname()
+			<< std::endl;
+		std::cout << "Phone number: " << contacts[index].get_phone_number()
+			<< std::endl;
+		std::cout << "Darkest secret: " << contacts[index].get_darkest_secret()
+			<< std::endl;
+		std::cout << "yes" << std::endl;
+		return (0);
+	}
+	else
+	{
+		std::cout << "entered here"<< std::endl;
+		return (1);
+	}
+}
+
 void	Phonebook::search(void)
 {
-	int	i;
+	int			i;
+	std::string	input;
 
 	i = 0;
+	if (this->_total_contacts == 0)
+	{
+		std::cout << "The phonebook is empty" << std::endl;
+		return ;
+	}
 	while (i < 8)
 	{
 		if (contacts[i].get_first_name().empty() != 1)
 		{
-			_print_category(i);
-			_print_category(contacts[i].get_first_name());
-			_print_category(contacts[i].get_last_name());
-			_print_category(contacts[i].get_nickname());
+			print_category(i);
+			print_category(contacts[i].get_first_name());
+			print_category(contacts[i].get_last_name());
+			print_category(contacts[i].get_nickname());
 			std::cout << "|" << std::endl;
 		}
 		i++;
 	}
+	do
+	{
+		std::cout << "Give me the index you are looking for" << std::endl;
+		std::getline(std::cin, input);
+		if (input.empty() || input.size() != 1 || !isdigit(input[0]))
+			std::cout << "Please provide an existing index!" << std::endl;
+	} while (input.empty() && input.size() != 1 && !isdigit(input[0])
+			&& (atoi(input.c_str()) > this->_total_contacts || atoi(input.c_str()) < 0)
+			&& this->_print_contact(atoi(input.c_str())));
 	return ;
 }
 
@@ -96,4 +137,6 @@ void	Phonebook::add(int index)
 		(contacts[index].*(funct[i]))(input);
 		i++;
 	}
+	if (this->_total_contacts < 8)
+		this->_total_contacts++;
 }

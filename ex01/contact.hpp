@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 08:15:23 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/09 11:09:31 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/09 17:00:33 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ class Contact
 		void	set_nickname(std::string nickname);
 		void	set_phone_number(std::string phone_number);
 		void	set_darkest_secret(std::string darkest_secret);
-		std::string	get_first_name(void);
-		std::string	get_last_name(void);
-		std::string	get_nickname(void);
-		std::string	get_phone_number(void);
-		std::string	get_darkest_secret(void);
+		const std::string&	get_first_name(void) const;
+		const std::string&	get_last_name(void) const;
+		const std::string&	get_nickname(void) const;
+		const std::string&	get_phone_number(void) const;
+		const std::string&	get_darkest_secret(void) const;
 	protected:
 	private:
 		std::string		_first_name;

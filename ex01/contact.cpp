@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 08:57:07 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/09 16:02:42 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/09 17:10:05 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,27 @@ void	Contact::set_darkest_secret(std::string darkest_secret)
 	this->_darkest_secret.assign(darkest_secret);
 }
 
-std::string	Contact::get_first_name(void) const
+const std::string&	Contact::get_first_name(void) const
 {
 	return (this->_first_name);
 }
 
-std::string	Contact::get_last_name(void) const
+const std::string&	Contact::get_last_name(void) const
 {
 	return (this->_last_name);
 }
 
-std::string	Contact::get_nickname(void) const
+const std::string&	Contact::get_nickname(void) const
 {
 	return (this->_nickname);
 }
 
-std::string	Contact::get_phone_number(void) const
+const std::string&	Contact::get_phone_number(void) const
 {
 	return (this->_phone_number);
 }
 
-std::string	Contact::get_darkest_secret(void) const
+const std::string&	Contact::get_darkest_secret(void) const
 {
 	return (this->_darkest_secret);
 }
