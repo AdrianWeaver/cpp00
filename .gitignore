@@ -31,7 +31,7 @@ objects/*
 
 # Executables
 ex00/megaphone
-ex01/phonebook
+ex01/Phonebook
 *.exe
 *.out
 *.app
