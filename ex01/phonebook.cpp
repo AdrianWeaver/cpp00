@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 08:46:12 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/07 16:47:41 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/09 11:31:35 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ void	Phonebook::search(void)
 	i = 0;
 	while (i < 8)
 	{
-		if (contacts[i].first_name != "")
+		if (contacts[i].get_first_name().empty() != 1)
 		{
 			_print_category(i);
-			_print_category(contacts[i].first_name);
-			_print_category(contacts[i].last_name);
-			_print_category(contacts[i].nickname);
+			_print_category(contacts[i].get_first_name());
+			_print_category(contacts[i].get_last_name());
+			_print_category(contacts[i].get_nickname());
 			std::cout << "|" << std::endl;
 		}
 		i++;
@@ -70,10 +70,16 @@ void	Phonebook::add(int index)
 {
 	std::string	input;
 	int			i;
-	std::string category[] = { "first name", "last name", "nickname", "phone number", "darkest secret"};
-	std::string *storage[] = {&contacts[index].first_name, &contacts[index].last_name, &contacts[index].nickname, &contacts[index].phone_number, &contacts[index].darkest_secret};
-
-	input = "";
+	std::string category[] = { "first name", "last name", "nickname",
+									"phone number", "darkest secret"};
+	void	(Contact::*funct[])(std::string) = {
+		&Contact::set_first_name,
+		&Contact::set_last_name,
+		&Contact::set_nickname,
+		&Contact::set_phone_number,
+		&Contact::set_darkest_secret,
+	};
+	//input = "";
 	i = 0;
 	while (i < 5)
 	{
@@ -85,10 +91,10 @@ void	Phonebook::add(int index)
 			}
 			std::cout << "What is your " << category[i] << "?" << std::endl;
 			std::getline(std::cin, input);
-			if (input == "")
+			if (input.empty())
 				std::cout << "Please provide something!" << std::endl;
-		} while (input == "");
-		*storage[i] = input;
+		} while (input.empty());
+		(contacts[index].*(funct[i]))(input);
 		i++;
 	}
 }

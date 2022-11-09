@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 08:57:07 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/09 10:24:56 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/09 11:15:27 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ void	Contact::set_last_name(std::string last_name)
 void	Contact::set_nickname(std::string nickname)
 {
 	this->_nickname = nickname;
+}
+
+void	Contact::set_phone_number(std::string phone_number)
+{
+	this->_phone_number = phone_number;
 }
 
 void	Contact::set_darkest_secret(std::string darkest_secret)
