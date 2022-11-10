@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 12:08:43 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/10 10:18:22 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/10 10:24:01 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,4 +133,6 @@ void	Account::_displayTimestamp(void)
 	strftime(buffer, sizeof(buffer), "[%Y%d%m_%H%M%S] ",
 			localtime(&current_time));
 	std::cout << buffer;
+	//uncomment to get example date
+	//std::cout << "[19920104_091532] ";
 }
