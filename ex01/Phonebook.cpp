@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 08:46:12 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/10 09:21:45 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/10 16:37:02 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	Phonebook::_print_contact(int index) const
 	}
 	else
 	{
-		std::cout << "entered here"<< std::endl;
 		return (1);
 	}
 }
@@ -105,8 +104,7 @@ void	Phonebook::search(void)
 			std::cout << "Closing stdin, shutting down program." << std::endl;
 			return ;
 		}
-		std::getline(std::cin, input);
-		if (input.empty() || input.size() != 1 || !isdigit(input[0])
+		if (input.empty() || !isdigit(input[0])
 			|| atoi(input.c_str()) > this->_total_contacts
 			|| atoi(input.c_str()) < 0
 			|| this->_print_contact(atoi(input.c_str())))
