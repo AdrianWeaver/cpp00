@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 08:46:12 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/09 17:56:06 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/10 07:58:21 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iomanip>
 #include <ctype.h>
 #include <stdlib.h>
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
 
 Phonebook::Phonebook(void) : _total_contacts(0)
 {
