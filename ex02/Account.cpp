@@ -6,13 +6,14 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 12:08:43 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/09 16:04:25 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/10 10:18:22 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Account.hpp"
 #include <ctime>
+#include <iomanip>
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -76,6 +77,7 @@ void	Account::displayAccountsInfos(void)
 
 void	Account::makeDeposit(int deposit)
 {
+	Account::_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex << ";p_amount:" << this->_amount
 		<< ";deposit:" << deposit;
 	this->_nbDeposits++;
@@ -125,7 +127,10 @@ void	Account::displayStatus( void ) const
 void	Account::_displayTimestamp(void)
 {
 	time_t	current_time;
+	char	buffer[19];
 
-	
-	//add function to display timestamps
+	current_time = time(NULL);
+	strftime(buffer, sizeof(buffer), "[%Y%d%m_%H%M%S] ",
+			localtime(&current_time));
+	std::cout << buffer;
 }
