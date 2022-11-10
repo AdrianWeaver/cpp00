@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 08:46:12 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/10 07:58:21 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/10 09:21:45 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ Phonebook::~Phonebook(void)
 	return ;
 }
 
-void	Phonebook::print_category(int index)
+void	Phonebook::_print_category(int index)
 {
 	std::cout << "|         " << index;
 }
 
-void	Phonebook::print_category(std::string content)
+void	Phonebook::_print_category(std::string content)
 {
 	std::cout << "|";
 	if (content.size() > 10)
@@ -62,7 +62,6 @@ int	Phonebook::_print_contact(int index) const
 			<< std::endl;
 		std::cout << "Darkest secret: " << contacts[index].get_darkest_secret()
 			<< std::endl;
-		std::cout << "yes" << std::endl;
 		return (0);
 	}
 	else
@@ -76,8 +75,10 @@ void	Phonebook::search(void)
 {
 	int			i;
 	std::string	input;
+	int			valid_index;
 
 	i = 0;
+	valid_index = 0;
 	if (this->_total_contacts == 0)
 	{
 		std::cout << "The phonebook is empty" << std::endl;
@@ -87,23 +88,32 @@ void	Phonebook::search(void)
 	{
 		if (contacts[i].get_first_name().empty() != 1)
 		{
-			print_category(i);
-			print_category(contacts[i].get_first_name());
-			print_category(contacts[i].get_last_name());
-			print_category(contacts[i].get_nickname());
+			_print_category(i);
+			_print_category(contacts[i].get_first_name());
+			_print_category(contacts[i].get_last_name());
+			_print_category(contacts[i].get_nickname());
 			std::cout << "|" << std::endl;
 		}
 		i++;
 	}
-	do
+	while (valid_index == 0)
 	{
 		std::cout << "Give me the index you are looking for" << std::endl;
 		std::getline(std::cin, input);
-		if (input.empty() || input.size() != 1 || !isdigit(input[0]))
+		if (std::cin.eof())
+		{
+			std::cout << "Closing stdin, shutting down program." << std::endl;
+			return ;
+		}
+		std::getline(std::cin, input);
+		if (input.empty() || input.size() != 1 || !isdigit(input[0])
+			|| atoi(input.c_str()) > this->_total_contacts
+			|| atoi(input.c_str()) < 0
+			|| this->_print_contact(atoi(input.c_str())))
 			std::cout << "Please provide an existing index!" << std::endl;
-	} while (input.empty() && input.size() != 1 && !isdigit(input[0])
-			&& (atoi(input.c_str()) > this->_total_contacts || atoi(input.c_str()) < 0)
-			&& this->_print_contact(atoi(input.c_str())));
+		else
+			valid_index = 1;
+	}
 	return ;
 }
 
