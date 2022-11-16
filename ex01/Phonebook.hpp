@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 08:15:22 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/10 10:56:25 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/16 10:05:36 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ class Phonebook
 	protected:
 	private:
 		Contact contacts[8];
-		int		_total_contacts;
-		int		_print_contact(int index) const;
-		void	_print_category(int index);
-		void	_print_category(std::string content);
+		int		_totalContacts;
+		int		_printContact(int index) const;
+		void	_printCategory(int index);
+		void	_printCategory(std::string content);
 };
 
 #endif

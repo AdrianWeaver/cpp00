@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 08:57:07 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/10 07:58:19 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/16 10:05:10 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,52 +27,52 @@ Contact::~Contact(void)
 	return ;
 }
 
-void	Contact::set_first_name(std::string first_name)
+void	Contact::setFirstName(std::string first_name)
 {
-	this->_first_name.assign(first_name);
+	this->_firstName.assign(first_name);
 }
 
-void	Contact::set_last_name(std::string last_name)
+void	Contact::setLastName(std::string last_name)
 {
-	this->_last_name.assign(last_name);
+	this->_lastName.assign(last_name);
 }
 
-void	Contact::set_nickname(std::string nickname)
+void	Contact::setNickname(std::string nickname)
 {
 	this->_nickname.assign(nickname);
 }
 
-void	Contact::set_phone_number(std::string phone_number)
+void	Contact::setPhoneNumber(std::string phone_number)
 {
-	this->_phone_number.assign(phone_number);
+	this->_phoneNumber.assign(phone_number);
 }
 
-void	Contact::set_darkest_secret(std::string darkest_secret)
+void	Contact::setDarkestSecret(std::string darkest_secret)
 {
-	this->_darkest_secret.assign(darkest_secret);
+	this->_darkestSecret.assign(darkest_secret);
 }
 
-const std::string&	Contact::get_first_name(void) const
+const std::string&	Contact::getFirstName(void) const
 {
-	return (this->_first_name);
+	return (this->_firstName);
 }
 
-const std::string&	Contact::get_last_name(void) const
+const std::string&	Contact::getLastName(void) const
 {
-	return (this->_last_name);
+	return (this->_lastName);
 }
 
-const std::string&	Contact::get_nickname(void) const
+const std::string&	Contact::getNickname(void) const
 {
 	return (this->_nickname);
 }
 
-const std::string&	Contact::get_phone_number(void) const
+const std::string&	Contact::getPhoneNumber(void) const
 {
-	return (this->_phone_number);
+	return (this->_phoneNumber);
 }
 
-const std::string&	Contact::get_darkest_secret(void) const
+const std::string&	Contact::getDarkestSecret(void) const
 {
-	return (this->_darkest_secret);
+	return (this->_darkestSecret);
 }

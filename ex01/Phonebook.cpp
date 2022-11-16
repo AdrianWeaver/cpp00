@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 08:46:12 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/10 16:37:02 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/16 10:08:34 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include "Phonebook.hpp"
 
-Phonebook::Phonebook(void) : _total_contacts(0)
+Phonebook::Phonebook(void) : _totalContacts(0)
 {
 	if (DEBUG)
 		std::cout << "Phonebook constructor called" << std::endl;
@@ -31,12 +31,12 @@ Phonebook::~Phonebook(void)
 	return ;
 }
 
-void	Phonebook::_print_category(int index)
+void	Phonebook::_printCategory(int index)
 {
 	std::cout << "|         " << index;
 }
 
-void	Phonebook::_print_category(std::string content)
+void	Phonebook::_printCategory(std::string content)
 {
 	std::cout << "|";
 	if (content.size() > 10)
@@ -48,19 +48,19 @@ void	Phonebook::_print_category(std::string content)
 	std::cout << content;
 }
 
-int	Phonebook::_print_contact(int index) const
+int	Phonebook::_printContact(int index) const
 {
-	if (index + 1 <= this->_total_contacts)
+	if (index + 1 <= this->_totalContacts)
 	{
-		std::cout << "First name: " << contacts[index].get_first_name()
+		std::cout << "First name: " << contacts[index].getFirstName()
 			<< std::endl;
-		std::cout << "Last name: " << contacts[index].get_last_name()
+		std::cout << "Last name: " << contacts[index].getLastName()
 			<< std::endl;
-		std::cout << "Nickname: " << contacts[index].get_nickname()
+		std::cout << "Nickname: " << contacts[index].getNickname()
 			<< std::endl;
-		std::cout << "Phone number: " << contacts[index].get_phone_number()
+		std::cout << "Phone number: " << contacts[index].getPhoneNumber()
 			<< std::endl;
-		std::cout << "Darkest secret: " << contacts[index].get_darkest_secret()
+		std::cout << "Darkest secret: " << contacts[index].getDarkestSecret()
 			<< std::endl;
 		return (0);
 	}
@@ -78,19 +78,19 @@ void	Phonebook::search(void)
 
 	i = 0;
 	valid_index = 0;
-	if (this->_total_contacts == 0)
+	if (this->_totalContacts == 0)
 	{
 		std::cout << "The phonebook is empty" << std::endl;
 		return ;
 	}
 	while (i < 8)
 	{
-		if (contacts[i].get_first_name().empty() != 1)
+		if (contacts[i].getFirstName().empty() != 1)
 		{
-			_print_category(i);
-			_print_category(contacts[i].get_first_name());
-			_print_category(contacts[i].get_last_name());
-			_print_category(contacts[i].get_nickname());
+			_printCategory(i);
+			_printCategory(contacts[i].getFirstName());
+			_printCategory(contacts[i].getLastName());
+			_printCategory(contacts[i].getNickname());
 			std::cout << "|" << std::endl;
 		}
 		i++;
@@ -105,9 +105,9 @@ void	Phonebook::search(void)
 			return ;
 		}
 		if (input.empty() || !isdigit(input[0])
-			|| atoi(input.c_str()) > this->_total_contacts
+			|| atoi(input.c_str()) > this->_totalContacts
 			|| atoi(input.c_str()) < 0
-			|| this->_print_contact(atoi(input.c_str())))
+			|| this->_printContact(atoi(input.c_str())))
 			std::cout << "Please provide an existing index!" << std::endl;
 		else
 			valid_index = 1;
@@ -122,11 +122,11 @@ void	Phonebook::add(int index)
 	std::string category[] = { "first name", "last name", "nickname",
 									"phone number", "darkest secret"};
 	void	(Contact::*funct[])(std::string) = {
-		&Contact::set_first_name,
-		&Contact::set_last_name,
-		&Contact::set_nickname,
-		&Contact::set_phone_number,
-		&Contact::set_darkest_secret,
+		&Contact::setFirstName,
+		&Contact::setLastName,
+		&Contact::setNickname,
+		&Contact::setPhoneNumber,
+		&Contact::setDarkestSecret,
 	};
 	i = 0;
 	while (i < 5)
@@ -145,6 +145,6 @@ void	Phonebook::add(int index)
 		(contacts[index].*(funct[i]))(input);
 		i++;
 	}
-	if (this->_total_contacts < 8)
-		this->_total_contacts++;
+	if (this->_totalContacts < 8)
+		this->_totalContacts++;
 }
